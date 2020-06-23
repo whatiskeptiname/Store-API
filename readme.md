@@ -1,0 +1,1 @@
+As simple API to manage a stores.
