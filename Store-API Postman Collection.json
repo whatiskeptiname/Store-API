@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"susan\",\n    \"password\": \"ghimire\"\n}",
+					"raw": "{\n    \"username\": \"Username\",\n    \"password\": \"Password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,7 +62,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"susan\",\n    \"password\": \"ghimire\"\n}",
+					"raw": "{\n    \"username\": \"Username\",\n    \"password\": \"Password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
