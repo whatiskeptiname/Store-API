@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "82ab0342-bacd-4818-9766-f2d687d1ec6a",
+		"name": "section 6",
+		"description": "End points for section 6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"susan\",\n    \"password\": \"ghimire\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": "To Register new User"
+			},
+			"response": []
+		},
+		{
+			"name": "/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c5a92a50-d706-4560-b798-37d2a2b3b2e7",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Access Token was not empty.\"] = jsonData.access_token !== undefined;",
+							"",
+							"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"susan\",\n    \"password\": \"ghimire\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "To Authenticate User"
+			},
+			"response": []
+		},
+		{
+			"name": "/logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74bf0aee-5ee3-42c2-b835-8eea7833910a",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Access Token was not empty.\"] = jsonData.access_token !== undefined;",
+							"",
+							"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				},
+				"description": "To logout User."
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/item/chair",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"item",
+						"chair"
+					]
+				},
+				"description": "To post an item"
+			},
+			"response": []
+		},
+		{
+			"name": "/store/<name> ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/store/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"store",
+						"test"
+					]
+				},
+				"description": "To create a  store."
+			},
+			"response": []
+		},
+		{
+			"name": "/refresh",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/store/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"store",
+						"test"
+					]
+				},
+				"description": "To refresh jwt token."
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name> ",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/item/chair",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"item",
+						"chair"
+					]
+				},
+				"description": "To update or create an item"
+			},
+			"response": []
+		},
+		{
+			"name": "/user/<id>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				},
+				"description": "To query a user by its id."
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/item/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"item",
+						"test"
+					]
+				},
+				"description": "To post an item"
+			},
+			"response": []
+		},
+		{
+			"name": "/store/<name> ",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "JWT {{jwt_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/store/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"store",
+						"test"
+					]
+				},
+				"description": "To get a store."
+			},
+			"response": []
+		},
+		{
+			"name": "/items",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/items",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"items"
+					]
+				},
+				"description": "To get all the items"
+			},
+			"response": []
+		},
+		{
+			"name": "/stores",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/stores",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"stores"
+					]
+				},
+				"description": "To get all the stores."
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name> ",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTIyMzEyODgsImlhdCI6MTU5MjIzMDk4OCwibmJmIjoxNTkyMjMwOTg4LCJpZGVudGl0eSI6MX0.NMBf0LcUmgNBm2hCmoNyjcCEXyu4l8E_U864kRKOYzs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/item/chair",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"item",
+						"chair"
+					]
+				},
+				"description": "To delete an item"
+			},
+			"response": []
+		},
+		{
+			"name": "/store/<name> ",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTIyMzEyODgsImlhdCI6MTU5MjIzMDk4OCwibmJmIjoxNTkyMjMwOTg4LCJpZGVudGl0eSI6MX0.NMBf0LcUmgNBm2hCmoNyjcCEXyu4l8E_U864kRKOYzs"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/store/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"store",
+						"test"
+					]
+				},
+				"description": "To delete an store."
+			},
+			"response": []
+		},
+		{
+			"name": "/user/<id>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTIyMzEyODgsImlhdCI6MTU5MjIzMDk4OCwibmJmIjoxNTkyMjMwOTg4LCJpZGVudGl0eSI6MX0.NMBf0LcUmgNBm2hCmoNyjcCEXyu4l8E_U864kRKOYzs"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"price\": 15.99\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/store/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"store",
+						"test"
+					]
+				},
+				"description": "To delete a user."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ed530539-d350-4ac9-819e-a7893c9d940a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7cd3fca0-da3e-4b87-8aef-47fc97f9b044",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
