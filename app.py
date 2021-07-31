@@ -7,11 +7,17 @@ from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///data.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
-app.secret_key = 'susan'
+app.secret_key = 'StoreThisAsEnvVar'
 api = Api(app)
+
+# remove this block before deploying as run.py will run this block
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 jwt = JWT(app, authenticate, identity)
 
