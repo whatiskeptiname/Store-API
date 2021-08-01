@@ -2,6 +2,6 @@ __pycache__/
 *.pyc
 .vscode/
 venv/
-db.py
 sqlite:/
 data.db
+req.txt
