@@ -18,9 +18,9 @@ app.secret_key = 'StoreThisAsEnvVar'
 api = Api(app)
 
 # comment this block before deploying as run.py will run this block
-# @app.before_first_request
-# def create_tables():
-#     db.create_all()
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 jwt = JWTManager(app)
 
